@@ -3,8 +3,9 @@
 ### This project is created for Task master task application this project is created with yarn node.js express.js 
 
 ## Installation
-```yarn```
-```yarn dev```
+```yarn
+   yarn dev
+```
 
 ## Live link for this server
 #### https://taskmaster-server-ebon.vercel.app
