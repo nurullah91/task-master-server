@@ -8,7 +8,8 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-const uri = process.env.DATABASE_URI;
+const uri =`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.gspcn8d.mongodb.net/?retryWrites=true&w=majority
+`;
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -19,15 +20,11 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
     const db = await client.db('taskmaster');
     const tasksCollection = db.collection('tasks');
 
     console.log('Successfully connected to MongoDB!');
 
-    app.get('/', (req, res) => {
-      res.send('Task Master Server');
-    });
 
     app.get('/tasks', async (req, res) => {
       try {
@@ -93,6 +90,10 @@ async function run() {
   }
 }
 run().catch(console.dir);
+
+app.get('/', (req, res) => {
+  res.send('Task Master Server');
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
