@@ -3,7 +3,8 @@
 ### This project is created for Task master task application this project is created with yarn node.js express.js 
 
 ## Installation
-```yarn
+```
+    yarn
    yarn dev
 ```
 
